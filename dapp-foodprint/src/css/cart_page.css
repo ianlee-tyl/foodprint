@@ -1,0 +1,421 @@
+@charset "utf-8";
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+.float_left{
+	float: left;
+}
+
+.float_right{
+	float: right;
+}
+
+
+
+@supports (--main-color: #f5ca47) {
+	:root {
+		--main-color: #f5ca47;
+		--sub-color: #ffffff;
+		--light-color: #F5DC9B;
+		--dark-color: #101820;
+		--grey-color: #f1f1f1;
+		--middle-grey-color: #a1a1a1;
+
+		--large-text: 40px;
+		--semi-large-text: 30px;
+		--normal-text: 24px;
+		--small-text: 16px;
+	}
+
+	#__react-alert__ div div div {
+		width: 400px !important;
+		background-color: var(--dark-color) !important;
+		color: var(--sub-color) !important;
+		font-size: var(--normal-text) !important;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.03), 0 6px 20px 0 rgba(0, 0, 0, 0.07) !important;
+	}
+
+	#__react-alert__ div div div svg {
+		stroke: var(--sub-color) !important;
+	}
+
+
+
+	#body{
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		color: var(--dark-color);
+		font-size: var(--normal-text);
+		vertical-align: baseline;
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, sans-serif;
+		overflow-x: hidden;
+		line-height: 1;
+
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		flex-grow: 0;
+		flex-shrink: 0;
+
+	}
+
+	.display_layout{
+		width: 780px;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.scroll_container{
+		width: 780px;
+		height: 100%;
+		position: relative;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+
+	.scroll_container::-webkit-scrollbar {
+		display: none;
+	}
+
+	#cart_container{
+		padding: 80px 0;
+	}
+
+	/*nav*/
+	.sticky{
+		position: fixed;
+		margin: 0 auto;
+		padding: 0;
+		left: 0;
+		right: 0;
+		top: 0;
+		z-index: 2000;
+	}
+
+	.nav_bar{
+		background-color: var(--sub-color);
+		overflow: hidden;
+		-ms-overflow-style: none;
+		width: 770px;
+		font-size: var(--normal-text);
+		padding: 25px 15px;
+	}
+
+	.nav_bar::-webkit-scrollbar {
+	    display: none;
+	}
+
+	.nav_bar button{
+		height: 100%;
+		font-size: var(--semi-large-text);
+		font-weight: 600;
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, sans-serif;
+		line-height: 20px;
+		border: 0;
+		background-color: transparent;
+		
+	}
+
+	.nav_bar label{
+		height: 20px;
+		line-height: 20px;
+		vertical-align: middle;
+		font-weight: 600;
+	}
+
+	.more_info{
+		padding: 10px 25px;
+		height: 50px;
+	}
+
+	.more_info h5{
+		font-size: var(--normal-text);
+		height: 50px;
+		line-height: 50px;
+	}
+
+	.coupon_item{
+		padding: 10px 25px;
+		height: 70px;
+		width: 96%;
+		margin: 2%;
+		border: 0;
+		border-radius: 8px;
+		background-color: var(--light-color);
+		color: var(--dark-color);
+	}
+
+	.selected_coupon{
+		background-color: var(--main-color);
+		color: var(--dark-color);
+	}
+
+	.check_list_title{
+		width: 730px;
+		height: 30px;
+		padding: 15px 25px;
+
+		background-color: var(--grey-color);
+	}
+
+	.check_list_title h2{
+		float: left;
+		font-size: var(--normal-text);
+		line-height: 30px;
+		height: 30px;
+		width: 400px;
+		font-weight: 600;
+	}
+
+	.check_list_title h3{
+		float: right;
+		font-size: var(--small-text);
+		line-height: 26px;
+		height: 26px;
+		width: 110px;
+		font-weight: 600;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	.check_list{
+		background-color: var(--sub-color);
+		padding: 0 10px;
+	}
+
+	.check_list_item{
+		background-color: var(--sub-color);
+		border-bottom: 1px solid var(--grey-color);
+		
+		width: 750px;
+		height: 125px;
+		padding: 10px 5px;
+	}
+
+	.check_list_item span{
+		float: left;
+		margin: 10px 5px 50px;
+		height: 40px;
+		width: 40px;
+		line-height: 40px;
+		font-size: var(--normal-text);
+		vertical-align: middle;
+		text-align: center;
+
+		background-color: transparent;
+		border: 1px solid var(--middle-grey-color);
+		border-radius: 1.5px;
+	}
+
+	.check_list_item h3{
+		font-size: var(--normal-text);
+		line-height: 40px;
+		vertical-align: middle;
+		float: left;
+		margin: 10px 5px;
+		width: 550px;
+	}
+
+	.check_list_item h4{
+		width: 130px;
+		height: 40px;
+		font-size: var(--normal-text);
+		line-height: 40px;
+		vertical-align: middle;
+		text-align: center;
+		float: right;
+		margin: 10px 0;
+		color: var(--dark-color);
+		font-weight: 600;
+	}
+
+	.check_list_item p{
+		float: left;
+		font-size: var(--small-text);
+		line-height: 20px;
+		padding-bottom: 8px;
+		vertical-align: middle;
+		float: left;
+		margin: 0 10px;
+		width: 550px;
+		color: var(--middle-grey-color);
+		font-weight: 600;
+	}
+
+	#delete_btn{
+		border: var(--dark-color) 2px solid;
+		color: var(--sub-color);
+		border-radius: 5px;
+		background-color: var(--dark-color);
+	}
+
+	.radio_btn_parent{
+		font-size: var(--normal-text);
+		background-color: var(--sub-color);
+		border-bottom: 1px solid var(--grey-color);
+		
+		width: 730px;
+		height: 60px;
+		padding: 5px 25px;
+	}
+
+	.radio_btn_parent span{
+		padding-top: 20px; 
+	}
+
+	input[type="radio"] {
+	    display:none;
+	}
+
+	input[type="radio"] + label {
+		height: 40px;
+	    line-height: 40px;
+	    vertical-align: center;
+	}
+
+	input[type="radio"] + label span {
+	    display: inline-block;
+	    width: 40px;
+	    height: 40px;
+	    margin: 1px 10px 5px 0;
+	    vertical-align: middle;
+	    background: url(../image/check_box_black_line.png) center no-repeat;
+	    background-size: 30px 30px;
+	    cursor: pointer;
+	}
+
+	input[type="radio"]:checked + label span {
+	    background: url(../image/check_box_yellow_btn.png) center no-repeat;
+	    background-size: 30px 30px;
+	}
+
+	/*total price*/
+	.total_price{
+		margin: 10px 0;
+		padding: 0 10px;
+	}
+
+	.price{
+		background-color: var(--sub-color);
+		border-bottom: 1px solid var(--grey-color);
+		
+		width: 750px;
+		height: 80px;
+		padding: 5px;
+	}
+
+	.price label{
+		float: left;
+		margin: 10px 5px 10px 20px;
+		height: 60px;
+		line-height: 60px;
+		font-size: var(--normal-text);
+		vertical-align: middle;
+		text-align: center;
+	}
+
+	.price h5{
+		width: 100px;
+		font-size: var(--normal-text);
+		line-height: 80px;
+		vertical-align: middle;
+		text-align: right;
+		float: right;
+		margin: 0 10px;
+		color: var(--dark-color);
+		font-weight: 600;
+	}
+
+	/*submit_cart*/
+	.submit_cart{
+		border-radius: 0;
+		border: 0;
+		margin: 0 auto;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 80px;
+		width: 780px;
+		padding: 10px 20px;
+		background-color: var(--dark-color);
+		cursor: pointer;
+	}
+
+	.submit_cart h5{
+		float: left;
+		font-size: var(--normal-text);
+		vertical-align: middle;
+		line-height: 30px;
+		font-weight: 600;
+		color: var(--sub-color);
+	}
+
+	.submit_cart h6{
+		float: right;
+		font-size: var(--normal-text);
+		vertical-align: middle;
+		line-height: 30px;
+		color: var(--sub-color);
+	}
+
+}

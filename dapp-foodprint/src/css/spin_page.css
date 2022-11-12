@@ -1,0 +1,113 @@
+:root {
+	--app-font: 'Quicksand', 'Lato', sans-serif;
+	--neutral-color: #2d2d2d;
+
+	--main-color: #f5ca47;
+	--sub-color: #ffffff;
+	--light-color: #F5DC9B;
+	--dark-color: #101820;
+	--grey-color: #f1f1f1;
+
+	--large-text: 40px;
+	--normal-text: 24px;
+	--small-text: 16px;
+}
+
+#spin_page_body {
+	font-family: var(--app-font);
+	background: var(--neutral-color);
+	user-select: none;
+	color: var(--sub-color);
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+#reset {
+	width: 50px;
+	height: 50px;
+	background-color: transparent;
+	border: transparent;
+	color: transparent;
+}
+
+#spin_page_body h1 {
+	font-size: 50px;
+	text-align: center;
+	font-weight: bold;
+	padding: 40px 20px 20px;
+}
+
+
+
+#spin_content{
+	width: 820px;
+	background-color: var(--sub-color);
+	z-index: 100;
+	margin: 20px 0px 0px;
+	padding: 0 0 50px 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.side_info{
+	float: right;
+	width: 370px;
+	/*background-color: var(--light-color);*/
+	color: var(--neutral-color);
+	z-index: 100;
+	margin: 5px 0px 0px;
+	padding: 20px 0 50px 0;
+	position: absolute;
+	font-size: var(--normal-text);
+	font-weight: bold;
+	line-height: 35px;
+	top: 0;
+	right: 25px;
+}
+
+.submit_btn{
+	width: 350px;
+	height: 60px;
+	text-align: center;
+	margin: 10px 25px 0px; 
+	display: inline-block;
+	border: none;
+	border-radius: 15px;
+	font-size: var(--normal-text);
+	font-weight: 600;
+	color: var(--dark-color);
+	background-color: var(--main-color);
+}
+
+.input_section{
+	width: 350px;
+	padding: 10px 25px;
+}
+
+.input_section h3{
+	width: 250px;
+	color: var(--dark-color);
+	font-size: var(--normal-text);
+	padding: 20px 0 5px;
+	font-weight: 600;
+}
+
+.input_text{
+	width: 340px;
+	height: 50px;
+	border: 1px solid var(--dark-color);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, sans-serif;
+	border-radius: 2px;
+	margin: 5px 0 20px 0;
+	letter-spacing: 1px;
+	font-size: var(--normal-text);
+	padding-left: 10px;
+}
+
+.input_section p{
+	font-size: var(--small-text);
+	font-weight: 600;
+	margin: 5px 0 0 0;
+	color: #22284a;
+}

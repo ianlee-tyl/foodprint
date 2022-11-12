@@ -1,0 +1,215 @@
+@charset "utf-8";
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+
+
+@supports (--main-color: #f5ca47) {
+	:root {
+		--main-color: #f5ca47;
+		--sub-color: #ffffff;
+		--light-color: #F5DC9B;
+		--dark-color: #101820;
+		--grey-color: #f1f1f1;
+
+		--very-large-text: 54px;
+		--large-text: 40px;
+		--semi-large-text: 30px;
+		--normal-text: 24px;
+		--small-text: 16px;
+	}
+
+	#__react-alert__ div div div {
+		width: 400px !important;
+		background-color: var(--dark-color) !important;
+		color: var(--sub-color) !important;
+		font-size: var(--normal-text) !important;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.03), 0 6px 20px 0 rgba(0, 0, 0, 0.07) !important;
+	}
+
+	#__react-alert__ div div div svg {
+		stroke: var(--sub-color) !important;
+	}
+
+	#body{
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		color: var(--dark-color);
+		font-size: var(--normal-text);
+		vertical-align: baseline;
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, sans-serif;
+		overflow-x: hidden;
+		line-height: 1;
+
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		flex-grow: 0;
+		flex-shrink: 0;
+
+	}
+
+	.display_layout{
+		width: 780px;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.scroll_container{
+		width: 780px;
+		height: 100%;
+		position: relative;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+
+	.scroll_container::-webkit-scrollbar {
+	  display: none;
+	}
+
+	.yellow_bg{
+		width: 800px;
+		height: 1333px;
+		background-color: var(--main-color);
+	}
+
+	#logo{
+		width: 150px;
+		padding: 30px 325px 20px;
+	}
+
+	#info_bg{
+		background-color: var(--main-color);
+	}
+
+	#menu_bg{
+		background-image: url("../image/menu_bg.png");
+		width: 800px;
+		height: 1333px;
+		background-color: white;
+		background-size: 800px auto;
+		background-repeat: no-repeat;
+		color: transparent;
+	}
+
+	.info_block{
+		width: 580px;
+		height: 725px;
+		margin: 10px 110px 130px;
+		background-image: url("../image/word_block.png");
+		background-size: 580px 725px;
+	}
+
+	.info_word{
+		width: 420px;
+		height: 520px;
+		padding: 140px 80px;
+	}
+
+	.info_word h3{
+		font-size: var(--large-text);
+		font-weight: 600;
+		width: 100%;
+		text-align: center;
+		vertical-align: middle;
+		line-height: 40px;
+	}
+
+	#order_num{
+		width: 280px;
+		height: 100px;
+		background-image: url("../image/num_bg.png");
+		background-size: 280px 100px;
+		margin: 10px 70px;
+		font-size: var(--very-large-text);
+		font-weight: 600;
+		text-align: center;
+		vertical-align: middle;
+		line-height: 100px;
+	}
+
+	/*submit_cart*/
+	.return_member{
+		position: fixed;
+		margin: 0 auto;
+		bottom: 0;
+		height: 50px;
+		width: 80px;
+		padding: 10px 20px;
+		background-color: #333333;
+		border-radius: 50px 50px 0 0;
+		overflow: hidden;
+		cursor: pointer;
+	}
+
+
+	.return_member h6{
+		font-size: var(--large-text);
+		width: 80px;
+		vertical-align: middle;
+		text-align: center;
+		line-height: 30px;
+		margin: 10px 0px;
+		color: white;
+	}
+
+}

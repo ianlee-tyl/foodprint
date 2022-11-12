@@ -1,0 +1,7 @@
+version: '3'
+services:
+  tron:
+    image: trontools/quickstart
+    container_name: tron
+    ports:
+      - "9090:9090"
