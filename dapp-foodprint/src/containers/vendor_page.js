@@ -35,6 +35,8 @@ class VendorPage extends Component {
     // }
 
     childToParent = (childData) => {
+        console.log(childData);
+        console.log(this.state.vendorInventory);
         this.setState(prevState => ({ vendorInventory: [...prevState.vendorInventory, childData] }))
     }
 
