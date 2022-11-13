@@ -39,22 +39,22 @@ abstract contract Owner is Context {
      }
 }
 
-contract Library is Owner {
+contract Marketplace is Owner {
   
-   struct Book {
+   struct Order {
        string name;
        string description;
-       bool valid; // false if been borrowed
+       uint256 carbon; // carbon footprint
        uint256 price; // TRX per day
-       address owner; // owner of the book
+       address owner; // owner of the order
    }
 
-   uint256 public bookId;
+   uint256 public orderId;
 
-   mapping (uint256 => Book) public books;
+   mapping (uint256 => Order) public orders;
 
    struct Tracking {
-       uint256 bookId;
+       uint256 orderId;
        uint256 startTime; // start time, in timestamp
        uint256 endTime; // end time, in timestamp
        address borrower; // borrower's address
@@ -65,68 +65,62 @@ contract Library is Owner {
    mapping(uint256 => Tracking) public trackings;
 
    /**
-    * @dev Add a Book with predefined `name`, `description` and `price`
+    * @dev Add a Order with predefined `name`, `description` and `price`
     * to the library.
     *
     * Returns a boolean value indicating whether the operation succeeded.
     *
-    * Emits a {NewBook} event.
+    * Emits a {NewOrder} event.
     */
-   function addBook(string memory name, string memory description, uint256 price) public returns (bool success) {
-       Book memory book = Book(name, description, true, price, _msgSender());
+   function addOrder(string memory name, string memory description, uint256 carbon, uint256 price) public returns (bool success) {
+       Order memory order = Order(name, description, carbon, price, _msgSender());
 
-       books[bookId] = book;
+       orders[orderId] = order;
 
-       emit NewBook(bookId++);
+       emit NewOrder(orderId++);
 
        return true;
    }
 
    /**
-    * @dev Borrow a book has `_bookId`. The rental period starts from
+    * @dev Borrow a order has `_orderId`. The rental period starts from
     * `startTime` ends with `endTime`.
     *
     * Returns a boolean value indicating whether the operation succeeded.
     *
     * Emits a `NewRental` event.
     */
-   function borrowBook(uint256 _bookId, uint256 startTime, uint256 endTime) public payable returns (bool) {
-       Book storage book = books[_bookId];
+   function borrowOrder(uint256 _orderId, uint256 startTime, uint256 endTime) public payable returns (bool) {
+       Order storage order = orders[_orderId];
 
-       require(book.valid == true, "The book is currently on loan");
+       require(_msgValue() == order.price, "Incorrect fund sent.");
 
-       require(_msgValue() == book.price * _days(startTime, endTime), "Incorrect fund sent.");
-
-       _sendTRX(book.owner, _msgValue());
-
-       _createTracking(_bookId, startTime, endTime);
-
-       emit NewRental(_bookId, trackingId++);
+       _sendTRX(order.owner, _msgValue());
 
        return true;
    }
 
    /**
-    * @dev Delete a book from the library. Only the book's owner or the
+    * @dev Delete a order from the library. Only the order's owner or the
     * library's owner is authorised for this operation.
     *
     * Returns a boolean value indicating whether the operation succeeded.
     *
-    * Emits a `DeleteBook` event.
+    * Emits a `DeleteOrder` event.
     */
-   function deleteBook(uint256 _bookId) public returns(bool success) {
-       require(_msgSender() == books[_bookId].owner || isOwner(),
-               "You are not authorised to delete this book.");
+   function deleteOrder(uint256 _orderId) public returns(bool success) {
+       require(_msgSender() == orders[_orderId].owner || isOwner(),
+               "You are not authorised to delete this order.");
       
-       delete books[_bookId];
+       delete orders[_orderId];
 
-       emit DeleteBook(_bookId);
+       emit DeleteOrder(_orderId);
 
        return true;
    }
 
    /**
-    * @dev Calculate the number of days a book is rented out.
+    * @dev Calculate the number of days a order is rented out.
     */
    function _days(uint256 startTime, uint256 endTime) internal pure returns(uint256) {
        if ((endTime - startTime) % uint256(86400) == 0) {
@@ -136,40 +130,23 @@ contract Library is Owner {
        }
    }
    /**
-    * @dev Send TRX to the book's owner.
+    * @dev Send TRX to the order's owner.
     */
    function _sendTRX(address receiver, uint256 value) internal {
        payable(address(uint160(receiver))).transfer(value);
    }
 
+
    /**
-    * @dev Create a new rental tracking.
+    * @dev Emitted when a new order is added to the library.
+    * Note `orderId` starts from 0.
     */
-   function _createTracking(uint256 _bookId, uint256 startTime, uint256 endTime) internal {
-         trackings[trackingId] = Tracking(_bookId, startTime, endTime, _msgSender());
-
-         Book storage book = books[_bookId];
-
-         book.valid = false;
-   }
-
+   event NewOrder(uint256 indexed orderId);
 
 
    /**
-    * @dev Emitted when a new book is added to the library.
-    * Note `bookId` starts from 0.
+    * @dev Emitted when a order is deleted from the library.
     */
-   event NewBook(uint256 indexed bookId);
-
-   /**
-    * @dev Emitted when a new book rental is made.
-    * Note `trackingId` and `bookId` start from 0.
-    */
-   event NewRental(uint256 indexed bookId, uint256 indexed trackingId);
-
-   /**
-    * @dev Emitted when a book is deleted from the library.
-    */
-   event DeleteBook(uint256 indexed bookId);
+   event DeleteOrder(uint256 indexed orderId);
 
 }

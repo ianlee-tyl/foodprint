@@ -1,0 +1,68 @@
+
+-------- INFORMATION DICTS --------
+
+~~~ food items ~~~~~~~
+
+food_dict:
+dictionary from foodprints_info.json
+
+food categories:
+{"fruits", "vegetables", "leafy vegetables", "grains", "hot drinks", "milks, "cheeses", "yogurt", "seeds nuts", "breads", "protein", "sweetener", "spreads"}
+
+
+~~~ food items ~~~~~~~
+
+menu categories:
+{"Burger", "Bowl", "Salad", "Parfait", "Fruit Salad", "Coffee"}
+
+menu_dict
+{
+"Burger" : {"breads", "vegetables", "protein", "cheeses"},
+"Bowl" : {"grains", "protein", "vegetables", "cheeses"},
+"Salad" : {"leafy vegetables", "protein", "vegetables", "cheeses", "seeds nuts"},
+"Parfait" : {"yogurt", "fruits", "seeds nuts", "spreads"},
+"Fruit Salad" : {"fruits", "spreads"},
+"Coffees" : {"hot drinks", "milks", "sweetener"}
+}
+
+
+
+--------- FOOTPRINT CALCULATIONS ---------
+
+def ingredient_footprint(ingredient, number):
+    details = food_dict[category][ingredient] 
+    footprint = details[emission_per_cal] * details[calories] * details[serving_portion] * number
+# IGNORE details(amount) 
+
+def menu_item_footprint(food):
+    total_footprint = 0
+    for parts of menu_dict(food): 
+        footprint_per_category = 0
+        for ingredient in food_dict[part]:
+            footprint_per_ingredient = ingredient_footprint(ingredient, chosen_amount)
+            footprint_per_category += footprint_per_ingredient
+        total_footprint += footprint_per_category
+
+
+
+--------- EXAMPLE NOTATION IN FOOD DICT ---------
+
+example ingredient (a specific food within a food category):
+    "protein" : {
+        '
+        other items
+
+        '
+
+        "Eggs": {
+            "emission_per_cal": 2.77,
+            "calories": "58",
+            "amount": "1",
+            "serving_portion": "1"
+        }
+
+        '
+        other items
+        
+        '
+    }

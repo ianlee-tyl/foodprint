@@ -9,22 +9,31 @@ import { getDataFromServer, dict2urlEncode } from '../http_utils.js'
 import { setCookie, getCookie } from '../cookie_utils.js'
 // import { Confirm } from '../alert_utils.js'
 
-
-
 class MenuPage extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      item: [[["Classic Burger", "The original burger starts with a 100% pure beef patty seasoned with just a pinch of salt", "$ 8.99", '/image/hamburger.png', "4.5 kg CO2"]], [["Chocolate Ice Cream", "This is why chocoholics become chocoholics. Rich, creamy, fresh chocolate that's made especially for you.", "$ 5.99", '/image/icecream.png', "3.5 kg CO2"]], ],
-      title: ["Hamburger", "Dessert"],
-      avail: [[[true]], [[true]]],
+      item: [[
+      ["Classic Burger", "The original burger starts with a 100% pure beef patty seasoned with just a pinch of salt", "$ 8.99", '/image/hamburger.png', "4.5 kg CO2"
+      ],
+      ["Poke Bowl", "This everything-in-a-bowl rainbow poke bowl has seared tuna, crab sushi salad, and Japanese scrambled egg. Eat the rainbow!", "$ 8.99", '/image/bowl.jpeg', "4.5 kg CO2"
+      ]], [
+      ["Salad", "This simple green salad is light, refreshing, and delicious!", "$ 5.99", '/image/salad.jpeg', "3.5 kg CO2"
+      ],
+      ["Fruit Salad", "The best ever fruit salad coated in a simple fruity dressing. Perfect for potlucks, summer parties, or a side dish to your meals!", "$ 5.99", '/image/fruit_salad.jpeg', "3.5 kg CO2"
+      ]], [["Parfait", "This Greek Yogurt Parfait recipe combines creamy Greek yogurt, fresh berries, and crunchy granola to create a simple grab-and-go breakfast option for busy mornings.", "$ 5.99", '/image/parfait.jpeg', "3.5 kg CO2"
+      ],
+      ["Coffee", "Coffee is a drink prepared from roasted coffee beans.", "$ 5.99", '/image/coffee.jpeg', "3.5 kg CO2"
+      ]]],
+      title: ["Main", "Sides", "Dessert & Beverages"],
+      avail: [[true, true], [true, true], [true, true]],
       errorPage: false,
       store_img: process.env.PUBLIC_URL + "/image/doday_store.png"
     };
 
     this.cancel_order = this.cancel_order.bind(this)
-    this.deleteItemFromPromotionList = this.deleteItemFromPromotionList.bind(this)
+    // this.deleteItemFromPromotionList = this.deleteItemFromPromotionList.bind(this)
 
     this.store_title = React.createRef();
     this.store_address = React.createRef();
@@ -210,7 +219,7 @@ class MenuPage extends Component {
       
                   <div className="store_img_detail">
                     <div className="store_title">
-                      <h1 id="store_name" ref={this.store_title}>Foodprint Store</h1>
+                      <h1 id="store_name" ref={this.store_title}>Food.Print </h1>
                       <h2 id="store_address" ref={this.store_address}>MIT</h2>
                       <h3 id="store_phone_num" ref={this.store_phone}>Phone: (617) 253-1000</h3>
                       <h3 id="store_avail"><span ref={this.store_avail}>Open</span></h3>
@@ -218,7 +227,7 @@ class MenuPage extends Component {
 
                     <div className="store_detail">
                       <h3 className="store_detail_content first_store_detail_content" ref={this.store_time}>Opening Hours: 10:00 - 22:00 </h3>
-                      <h3 className="store_detail_content">Welcome to Foodprint! Foodprint is a dAPP for tracing food carbon footprint for restaurants and individual consumers, developed on TRON.</h3>
+                      <h3 className="store_detail_content">Welcome to Food.Print! Food.Print is a dAPP for tracing food carbon footprint for restaurants and individual consumers, developed on TRON.</h3>
                     </div>
 
                   </div>

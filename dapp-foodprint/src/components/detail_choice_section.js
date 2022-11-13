@@ -188,7 +188,7 @@ class DetailChoiceSection extends Component {
                 </div>
                 <div className="detail_choice">
                     {this.props.sectionContent.map((item, index) => 
-                        <DetailChoiceItem index={index} key={this.props.sectionTitle+item} itemKey={this.props.sectionTitle+item} itemContent={item} itemType={this.props.sectionType} checkedStatus={this.state.checkedStatus[index]} avail={(this.state.availList[index]==='True')&&this.state.conditionalFlag[index]} onChange={this.eventhandler}/>
+                        <DetailChoiceItem index={index} key={this.props.sectionTitle+item} itemKey={this.props.sectionTitle+item} itemContent={item} footprint={this.props.sectionFootprint[index]} itemType={this.props.sectionType} checkedStatus={this.state.checkedStatus[index]} avail={(this.state.availList[index]==='True')&&this.state.conditionalFlag[index]} onChange={this.eventhandler}/>
                     )}
                 </div>
             </div>
