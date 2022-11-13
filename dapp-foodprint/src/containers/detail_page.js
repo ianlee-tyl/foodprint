@@ -415,7 +415,7 @@ var detail_info = {
             "calories": 37.0,
             "amount": "1 bar",
             "serving_portion": 0.5
-        }
+        },
         "Cane Sugar": {
             "emission_per_cal": 0.91,
             "calories": 19.0,
