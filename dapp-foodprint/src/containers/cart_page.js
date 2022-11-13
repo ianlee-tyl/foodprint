@@ -46,7 +46,7 @@ class CartPage extends Component {
     if (getCookie("store_id") !== "" && getCookie("cart_id") !== "" && getCookie("device_key") !== "") {
        
       // get tronWeb object 
-      getTronWeb();
+      getTronWeb(); 
     
       // Wait a while to ensure tronweb object has already injected
       setTimeout(async ()=>{
@@ -103,10 +103,10 @@ class CartPage extends Component {
               </div>
               <div className="scroll_container cart_layout" id="cart_container">
                 <div className="check_list_title">
-                  <h2>Your Transactions</h2>
+                  <h2>Foodprint Transactions</h2>
 
                 </div>
-                For wallet address: ({window.tronWeb.defaultAddress.base58})
+                Your wallet address: ({window.tronWeb.defaultAddress.base58})
                 <div className="check_list">
                   {this.state.itemsKeys.map((item, index) => <CartItem key={item+index} itemIndex={index} itemNum={1} foodprint={this.state.foodprint[index]} itemTitle={this.state.itemsTitle[index]} itemAddons={this.state.itemsAddons[index]} itemPrice={this.state.itemsPrice[index]} onChange={this.eventhandler}/>)}
                 </div>

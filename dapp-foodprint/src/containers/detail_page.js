@@ -471,9 +471,10 @@ class DetailPage extends Component {
       itemDesc: "",
       extraPrice: {},
       shoppingCartItem: {},
+      foodprint_dict: {},
       one_bowl_price: parseInt(0),
       total_price: 0.0,
-      total_footprint: 4.5,
+      total_footprint: 0.0,
       main_menu_amount: 1,
       errorPage: false,
       condFlag: [],
@@ -578,7 +579,7 @@ class DetailPage extends Component {
       //       detail_choice: result
       //     })
       //   })
-      //   .catch(error => {
+      //   .catch(error => { 
           
       //     // console.log(error)
 
@@ -649,9 +650,17 @@ class DetailPage extends Component {
       total_foodprint += _item_info["calories"]*_item_info["emission_per_cal"]*_item_info["serving_portion"]/1000.0
     }
 
+    this.state.foodprint_dict[dataTitle] = total_foodprint
+    var tt_foodprint = 0.0
+    var keys = Object.keys(this.state.foodprint_dict)
+    for (var i = 0; i < keys.length; i++) {
+        tt_foodprint += this.state.foodprint_dict[keys[i]]
+    }
+        
     this.setState({
         total_price: this.state.itemPrice,
-        total_footprint: this.formatFloat(total_foodprint)
+        foodprint_dict: this.state.foodprint_dict,
+        total_footprint: this.formatFloat(tt_foodprint)
     })
   }
 
