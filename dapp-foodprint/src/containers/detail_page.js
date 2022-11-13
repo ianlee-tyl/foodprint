@@ -119,7 +119,7 @@ class DetailPage extends Component {
       if (this.state.detail_choice[i][3] === "must") {
         if (!Object.keys(this.state.shoppingCartItem).includes(this.state.detail_choice[i][1]) || this.state.shoppingCartItem[this.state.detail_choice[i][1]].length === 0) {
           const alert = this.props.alert
-          alert.show("請選取" + this.state.detail_choice[i][1])
+          alert.show("Please select" + this.state.detail_choice[i][1])
           return false
         }
       }
@@ -177,7 +177,7 @@ class DetailPage extends Component {
               switchPageFlag: true
             }, () => { 
               const alert = this.props.alert
-              alert.show("成功加入購物車") })
+              alert.show("Successfully add to cart") })
 
 
           }
@@ -282,7 +282,7 @@ class DetailPage extends Component {
     
               <div className="nav_bar sticky">
                 <Link to={"/menuPage"}>
-                  <button className="return_btn">{"<回首頁"}</button>
+                  <button className="return_btn">{"<Back"}</button>
                 </Link>
               </div>
 
@@ -324,8 +324,8 @@ class DetailPage extends Component {
 
 
               <button className="add_to_cart" onClick={this.handleSubmit}>
-                <h5>加 <span id="amount">{ this.state.main_menu_amount }</span> 碗到購物車</h5>
-                <h6>NT$<span id="price">
+                <h5>Add <span id="amount">{ this.state.main_menu_amount }</span> to cart</h5>
+                <h6>$<span id="price">
                   { this.state.total_price }
                 </span></h6>
               </button>

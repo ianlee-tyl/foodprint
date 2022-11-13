@@ -5,6 +5,7 @@ import { Redirect } from 'react-router';
 import { withAlert } from 'react-alert'
 
 // import styles from '../css/main.css';
+import { init_cart_and_device_key } from '../http_utils.js'
 import { setCookie } from '../cookie_utils.js'
 
 
@@ -29,6 +30,8 @@ class StorePage extends Component {
 
   storeOnClicked(e, data) {
     setCookie("store_id", data, 1)
+    init_cart_and_device_key(process.env.REACT_APP_SERVER_URL)
+    setCookie("promotion_key", "", 1)
 
     if (data === "DDC") {
       document.documentElement.style.setProperty('--main-color', '#d4b290');
@@ -57,7 +60,7 @@ class StorePage extends Component {
 
   render() {   
         if (this.state.switchPageFlag) {
-          return <Redirect push to="/featurePage" />;
+          return <Redirect push to="/menuPage" />;
         } 
 
         return (           
