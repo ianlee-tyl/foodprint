@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
 import { withAlert } from 'react-alert'
@@ -57,43 +57,46 @@ class StorePage extends Component {
   }
 
   gettronweb = async (e) => {
-      if(window.tronWeb && window.tronWeb.defaultAddress.base58){
-          let walletBalances = await window.tronWeb.trx.getAccount(
-            window.tronWeb.defaultAddress.base58
-          );
-          alert("Connected to TRON account. Account balance: "+walletBalances["balance"]/1e6 + " TRX")
-          this.storeOnClicked(e, "DDE")
-      }else{
-        alert("Cannot connect to a TRON account...")
-      }
+    if (window.tronWeb && window.tronWeb.defaultAddress.base58) {
+      let walletBalances = await window.tronWeb.trx.getAccount(
+        window.tronWeb.defaultAddress.base58
+      );
+      alert("Connected to TRON account. Account balance: " + walletBalances["balance"] / 1e6 + " TRX")
+      this.storeOnClicked(e, "DDE")
+    } else {
+      alert("Cannot connect to a TRON account...")
+    }
   }
 
-  render() {   
-        if (this.state.switchPageFlag) {
-          return <Redirect push to="/menuPage" />;
-        } 
+  render() {
+    if (this.state.switchPageFlag) {
+      return <Redirect push to="/menuPage" />;
+    }
 
-        return (           
-            <div id="body">
-              <div className="container padding_top" id="bg_pic">
+    return (
+      <div id="body">
+        <div className="container padding_top" id="bg_pic">
 
-                <div className="small_btn_holder">
-                  
-                  <button onClick={(e) => this.gettronweb(e)}>
-                    <h1>Customer</h1>
-                  </button>
-                  
-                </div>
-                  
-                <div className="small_btn_holder">
-                  
-                  <button onClick={(e) => this.storeOnClicked(e, "DDG")}>
-                    <h1>Vendor</h1>
-                  </button>
-                  
-                </div>
+          <div className="small_btn_holder">
 
-                {/*<div className="btn_holder">
+            <button onClick={(e) => this.gettronweb(e)}>
+              <h1>Customer</h1>
+            </button>
+
+          </div>
+
+          <div className="small_btn_holder">
+            <Link to={"/vendorPage"}>
+              <button><h1>Vendor</h1></button>
+            </Link>
+          </div>
+
+
+          {/* <button onClick={(e) => this.storeOnClicked(e, "DDG")}>
+              <h1>Vendor</h1>
+            </button> */}
+
+          {/*<div className="btn_holder">
                   
                   <button onClick={(e) => this.storeOnClicked(e, "DDC")}>
                     <h1>南山店</h1>
@@ -102,10 +105,11 @@ class StorePage extends Component {
                   
                 </div>*/}
 
-              </div>
-            </div>
-      
-        );}
+        </div>
+      </div>
+
+    );
+  }
 }
 
 export default withAlert()(StorePage);
