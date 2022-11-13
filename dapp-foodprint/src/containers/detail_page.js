@@ -12,7 +12,7 @@ import DetailChoiceSection from "../components/detail_choice_section.js"
 import '../css/main.css';
 
 const menu_to_ingredients_dict = {
-  "Classic Burger" : ["breads", "vegetables", "protein", "cheeses"],
+  "Classic Burger" : ["breads", "vegetables", "leafy vegetables", "protein", "cheeses"],
   "Poke Bowl" : ["grains", "protein", "vegetables", "cheeses"],
   "Salad" : ["leafy vegetables", "protein", "vegetables", "cheeses", "seeds nuts"],
   "Parfait" : ["yogurt", "fruits", "seeds nuts", "spreads"],
@@ -182,6 +182,12 @@ var detail_info = {
         }
     },
     "milks": {
+        "Whole milk": {
+            "emission_per_cal": 7.13,
+            "calories": 149.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        },
         "Almond milk": {
             "emission_per_cal": 2.22,
             "calories": 40.0,
@@ -191,12 +197,6 @@ var detail_info = {
         "Coconut milk": {
             "emission_per_cal": 12.85,
             "calories": 552.0,
-            "amount": "1 cup",
-            "serving_portion": 0.5
-        },
-        "Cow's milk": {
-            "emission_per_cal": 7.13,
-            "calories": 149.0,
             "amount": "1 cup",
             "serving_portion": 0.5
         },
@@ -252,7 +252,7 @@ var detail_info = {
         }
     },
     "yogurt": {
-        "Yoghurt": {
+        "Yogurt": {
             "emission_per_cal": 3.99,
             "calories": 138.0,
             "amount": "1",
@@ -322,6 +322,12 @@ var detail_info = {
         }
     },
     "breads": {
+        "Burger bun": {
+            "emission_per_cal": 0.41,
+            "calories": 120.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        },
         "Bagels": {
             "emission_per_cal": 0.33,
             "calories": 252.0,
@@ -333,12 +339,6 @@ var detail_info = {
             "calories": 164.0,
             "amount": "1",
             "serving_portion": 2.0
-        },
-        "Bread": {
-            "emission_per_cal": 0.41,
-            "calories": 120.0,
-            "amount": "1",
-            "serving_portion": 1.0
         },
         "Sourdough bread": {
             "emission_per_cal": 0.34,
@@ -404,19 +404,7 @@ var detail_info = {
         }
     },
     "sweetener": {
-        "Cane Sugar": {
-            "emission_per_cal": 0.91,
-            "calories": 19.0,
-            "amount": "1 tbsp",
-            "serving_portion": 0.5
-        },
-        "Sugar": {
-            "emission_per_cal": 0.46,
-            "calories": 20.0,
-            "amount": "1 tsp",
-            "serving_portion": 1.5
-        },
-        "Dark chocolate": {
+      "Dark chocolate": {
             "emission_per_cal": 3.69,
             "calories": 604.0,
             "amount": "1 bar",
@@ -428,6 +416,18 @@ var detail_info = {
             "amount": "1 bar",
             "serving_portion": 0.5
         }
+        "Cane Sugar": {
+            "emission_per_cal": 0.91,
+            "calories": 19.0,
+            "amount": "1 tbsp",
+            "serving_portion": 0.5
+        },
+        "Sugar": {
+            "emission_per_cal": 0.46,
+            "calories": 20.0,
+            "amount": "1 tsp",
+            "serving_portion": 1.5
+        }       
     },
     "spreads": {
         "Almond butter": {
@@ -471,10 +471,9 @@ class DetailPage extends Component {
       itemDesc: "",
       extraPrice: {},
       shoppingCartItem: {},
-      foodprint_dict: {},
       one_bowl_price: parseInt(0),
       total_price: 0.0,
-      total_footprint: 0.0,
+      total_footprint: 4.5,
       main_menu_amount: 1,
       errorPage: false,
       condFlag: [],
@@ -579,7 +578,7 @@ class DetailPage extends Component {
       //       detail_choice: result
       //     })
       //   })
-      //   .catch(error => { 
+      //   .catch(error => {
           
       //     // console.log(error)
 
@@ -650,17 +649,9 @@ class DetailPage extends Component {
       total_foodprint += _item_info["calories"]*_item_info["emission_per_cal"]*_item_info["serving_portion"]/1000.0
     }
 
-    this.state.foodprint_dict[dataTitle] = total_foodprint
-    var tt_foodprint = 0.0
-    var keys = Object.keys(this.state.foodprint_dict)
-    for (var i = 0; i < keys.length; i++) {
-        tt_foodprint += this.state.foodprint_dict[keys[i]]
-    }
-        
     this.setState({
         total_price: this.state.itemPrice,
-        foodprint_dict: this.state.foodprint_dict,
-        total_footprint: this.formatFloat(tt_foodprint)
+        total_footprint: this.formatFloat(total_foodprint)
     })
   }
 
