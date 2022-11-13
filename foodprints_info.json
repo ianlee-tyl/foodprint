@@ -1,0 +1,436 @@
+{
+    "fruits": {
+        "Apples": {
+            "emission_per_cal": 0.9,
+            "calories": 95.0,
+            "amount": "1",
+            "serving_portion": 0.5
+        },
+        "Bananas": {
+            "emission_per_cal": 0.88,
+            "calories": 111.0,
+            "amount": "1",
+            "serving_portion": 0.5
+        },
+        "Grapes": {
+            "emission_per_cal": 12.67,
+            "calories": 104.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        },
+        "Kiwis": {
+            "emission_per_cal": 2.8,
+            "calories": 112.0,
+            "amount": "1",
+            "serving_portion": 0.5
+        },
+        "Oranges": {
+            "emission_per_cal": 1.08,
+            "calories": 47.0,
+            "amount": "1",
+            "serving_portion": 0.5
+        },
+        "Pears": {
+            "emission_per_cal": 1.66,
+            "calories": 101.0,
+            "amount": "1",
+            "serving_portion": 0.5
+        },
+        "Raspberries": {
+            "emission_per_cal": 24.61,
+            "calories": 64.0,
+            "amount": "1 cup",
+            "serving_portion": 1.0
+        },
+        "Strawberries": {
+            "emission_per_cal": 5.18,
+            "calories": 49.0,
+            "amount": "1 cup",
+            "serving_portion": 1.0
+        },
+        "Pineapple": {
+            "emission_per_cal": 1.94,
+            "calories": 453.0,
+            "amount": "1",
+            "serving_portion": 0.125
+        }
+    },
+    "vegetables": {
+        "Avocados": {
+            "emission_per_cal": 1.85,
+            "calories": 320.0,
+            "amount": "1",
+            "serving_portion": 0.5
+        },
+        "Carrots": {
+            "emission_per_cal": 2.33,
+            "calories": 25.0,
+            "amount": "1",
+            "serving_portion": 0.5
+        },
+        "Cherry tomatoes": {
+            "emission_per_cal": 12.17,
+            "calories": 20.0,
+            "amount": "1",
+            "serving_portion": 5.0
+        },
+        "Limes": {
+            "emission_per_cal": 1.42,
+            "calories": 20.0,
+            "amount": "1",
+            "serving_portion": 0.25
+        },
+        "Mushrooms": {
+            "emission_per_cal": 7.88,
+            "calories": 1.0,
+            "amount": "1",
+            "serving_portion": 3.0
+        },
+        "Onions": {
+            "emission_per_cal": 1.01,
+            "calories": 34.0,
+            "amount": "1",
+            "serving_portion": 0.125
+        },
+        "Peppers": {
+            "emission_per_cal": 2.72,
+            "calories": 20.0,
+            "amount": "1",
+            "serving_portion": 0.5
+        },
+        "Sweetcorn": {
+            "emission_per_cal": 1.29,
+            "calories": 562.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        },
+        "Tomatoes": {
+            "emission_per_cal": 11.73,
+            "calories": 20.0,
+            "amount": "1",
+            "serving_portion": 0.125
+        },
+        "Cucumber": {
+            "emission_per_cal": 4.12,
+            "calories": 66.0,
+            "amount": "1",
+            "serving_portion": 0.25
+        }
+    },
+    "leafy vegetables": {
+        "Kale": {
+            "emission_per_cal": 2.64,
+            "calories": 33.0,
+            "amount": "1 cup",
+            "serving_portion": 1.0
+        },
+        "Lettuce": {
+            "emission_per_cal": 25.32,
+            "calories": 90.0,
+            "amount": "1 head",
+            "serving_portion": 0.125
+        },
+        "Spinach": {
+            "emission_per_cal": 3.77,
+            "calories": 78.0,
+            "amount": "1 bunch",
+            "serving_portion": 0.25
+        }
+    },
+    "grains": {
+        "Rice": {
+            "emission_per_cal": 2.05,
+            "calories": 757.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        },
+        "Quinoa": {
+            "emission_per_cal": 0.41,
+            "calories": 626.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        }
+    },
+    "hot drinks": {
+        "Coffee": {
+            "emission_per_cal": 2.22,
+            "calories": 2.0,
+            "amount": "1 cup",
+            "serving_portion": 1.0
+        }
+    },
+    "milks": {
+        "Almond milk": {
+            "emission_per_cal": 2.22,
+            "calories": 40.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        },
+        "Coconut milk": {
+            "emission_per_cal": 12.85,
+            "calories": 552.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        },
+        "Cow's milk": {
+            "emission_per_cal": 7.13,
+            "calories": 149.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        },
+        "Oat milk": {
+            "emission_per_cal": 1.05,
+            "calories": 130.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        },
+        "Soy milk": {
+            "emission_per_cal": 2.32,
+            "calories": 109.0,
+            "amount": "1",
+            "serving_portion": 0.5
+        }
+    },
+    "cheeses": {
+        "Cheddar cheese": {
+            "emission_per_cal": 5.41,
+            "calories": 89.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        },
+        "Cottage cheese": {
+            "emission_per_cal": 29.35,
+            "calories": 206.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        },
+        "Feta cheese": {
+            "emission_per_cal": 5.04,
+            "calories": 74.0,
+            "amount": "1 oz",
+            "serving_portion": 0.5
+        },
+        "Mozzarella cheese": {
+            "emission_per_cal": 6.76,
+            "calories": 78.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        },
+        "Parmesan cheese": {
+            "emission_per_cal": 6.37,
+            "calories": 22.0,
+            "amount": "1 tsp",
+            "serving_portion": 2.0
+        },
+        "Ricotta cheese": {
+            "emission_per_cal": 5.2,
+            "calories": 428.0,
+            "amount": "1 cup",
+            "serving_portion": 0.5
+        }
+    },
+    "yogurt": {
+        "Yoghurt": {
+            "emission_per_cal": 3.99,
+            "calories": 138.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        }
+    },
+    "seeds nuts": {
+        "Almonds": {
+            "emission_per_cal": 0.11,
+            "calories": 546.0,
+            "amount": "1 cup",
+            "serving_portion": 0.125
+        },
+        "Brazil nuts": {
+            "emission_per_cal": 0.38,
+            "calories": 872.0,
+            "amount": "1 cup",
+            "serving_portion": 0.125
+        },
+        "Cashew nuts": {
+            "emission_per_cal": 0.37,
+            "calories": 155.0,
+            "amount": "1 oz",
+            "serving_portion": 1.0
+        },
+        "Chia seeds": {
+            "emission_per_cal": 0.34,
+            "calories": 136.0,
+            "amount": "1 oz",
+            "serving_portion": 1.0
+        },
+        "Peanuts": {
+            "emission_per_cal": 0.57,
+            "calories": 828.0,
+            "amount": "1 cup",
+            "serving_portion": 0.125
+        },
+        "Pecan nuts": {
+            "emission_per_cal": 0.42,
+            "calories": 684.0,
+            "amount": "1 cup",
+            "serving_portion": 0.125
+        },
+        "Pumpkin seeds": {
+            "emission_per_cal": 0.32,
+            "calories": 721.0,
+            "amount": "1cup",
+            "serving_portion": 0.125
+        },
+        "Sunflower seeds": {
+            "emission_per_cal": 0.32,
+            "calories": 818.0,
+            "amount": "1 cup",
+            "serving_portion": 0.125
+        },
+        "Walnuts": {
+            "emission_per_cal": 0.41,
+            "calories": 523.0,
+            "amount": "1 cup",
+            "serving_portion": 0.125
+        },
+        "Granola": {
+            "emission_per_cal": 0.43,
+            "calories": 132.0,
+            "amount": "1 oz",
+            "serving_portion": 4.0
+        }
+    },
+    "breads": {
+        "Bagels": {
+            "emission_per_cal": 0.33,
+            "calories": 252.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        },
+        "Baguette": {
+            "emission_per_cal": 0.38,
+            "calories": 164.0,
+            "amount": "1",
+            "serving_portion": 2.0
+        },
+        "Bread": {
+            "emission_per_cal": 0.41,
+            "calories": 120.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        },
+        "Sourdough bread": {
+            "emission_per_cal": 0.34,
+            "calories": 101.0,
+            "amount": "1",
+            "serving_portion": 2.0
+        }
+    },
+    "protein": {
+        "Bacon": {
+            "emission_per_cal": 6.82,
+            "calories": 106.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        },
+        "Beef mince": {
+            "emission_per_cal": 47.34,
+            "calories": 172.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        },
+        "Chicken breast": {
+            "emission_per_cal": 5.83,
+            "calories": 344.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        },
+        "Chicken wings": {
+            "emission_per_cal": 4.65,
+            "calories": 77.0,
+            "amount": "1",
+            "serving_portion": 5.0
+        },
+        "Pork sausages": {
+            "emission_per_cal": 3.66,
+            "calories": 130.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        },
+        "Salmon": {
+            "emission_per_cal": 5.95,
+            "calories": 367.0,
+            "amount": "0.5",
+            "serving_portion": 1.0
+        },
+        "Tofu": {
+            "emission_per_cal": 0.54,
+            "calories": 94.0,
+            "amount": "0.5 cup",
+            "serving_portion": 2.0
+        },
+        "Tuna": {
+            "emission_per_cal": 9.97,
+            "calories": 203.0,
+            "amount": "0.5",
+            "serving_portion": 1.0
+        },
+        "Eggs": {
+            "emission_per_cal": 2.77,
+            "calories": 58.0,
+            "amount": "1",
+            "serving_portion": 1.0
+        }
+    },
+    "sweetener": {
+        "Cane Sugar": {
+            "emission_per_cal": 0.91,
+            "calories": 19.0,
+            "amount": "1 tbsp",
+            "serving_portion": 0.5
+        },
+        "Sugar": {
+            "emission_per_cal": 0.46,
+            "calories": 20.0,
+            "amount": "1 tsp",
+            "serving_portion": 1.5
+        },
+        "Dark chocolate": {
+            "emission_per_cal": 3.69,
+            "calories": 604.0,
+            "amount": "1 bar",
+            "serving_portion": 0.5
+        },
+        "Milk chocolate": {
+            "emission_per_cal": 2.21,
+            "calories": 37.0,
+            "amount": "1 bar",
+            "serving_portion": 0.5
+        }
+    },
+    "spreads": {
+        "Almond butter": {
+            "emission_per_cal": 0.07,
+            "calories": 98.0,
+            "amount": "1 tbsp",
+            "serving_portion": 1.0
+        },
+        "Apricot jam": {
+            "emission_per_cal": 0.76,
+            "calories": 50.0,
+            "amount": "1 tbsp",
+            "serving_portion": 1.0
+        },
+        "Peanut butter": {
+            "emission_per_cal": 0.58,
+            "calories": 94.0,
+            "amount": "1 tbsp",
+            "serving_portion": 1.0
+        },
+        "Strawberry jam": {
+            "emission_per_cal": 1.99,
+            "calories": 50.0,
+            "amount": "1 tbsp",
+            "serving_portion": 1.0
+        }
+    }
+}
