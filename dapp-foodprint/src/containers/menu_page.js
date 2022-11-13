@@ -15,16 +15,16 @@ class MenuPage extends Component {
     super(props);
     this.state = {
       item: [[
-      ["Classic Burger", "The original burger starts with a 100% pure beef patty seasoned with just a pinch of salt", "$ 8.99", '/image/hamburger.png', "16.5 kg CO2"
+      ["Classic Burger", "The original burger starts with a 100% pure beef patty seasoned with just a pinch of salt", "$ 8.99", '/image/hamburger.png', "9.0 kg CO2"
       ],
-      ["Poke Bowl", "This everything-in-a-bowl rainbow poke bowl has seared tuna, crab sushi salad, and Japanese scrambled egg. Eat the rainbow!", "$ 12.99", '/image/bowl.jpeg', "9.5 kg CO2"
+      ["Poke Bowl", "This everything-in-a-bowl rainbow poke bowl has seared tuna, crab sushi salad, and Japanese scrambled egg. Eat the rainbow!", "$ 12.99", '/image/bowl.jpeg', "3.6 kg CO2"
       ]], [
-      ["Salad", "This simple green salad is light, refreshing, and delicious!", "$ 5.99", '/image/salad.jpeg', "3.5 kg CO2"
+      ["Salad", "This simple green salad is light, refreshing, and delicious!", "$ 5.99", '/image/salad.jpeg', "2.0 kg CO2"
       ],
-      ["Fruit Salad", "The best ever fruit salad coated in a simple fruity dressing. Perfect for potlucks, summer parties, or a side dish to your meals!", "$ 7.99", '/image/fruit_salad.jpeg', "4.5 kg CO2"
-      ]], [["Parfait", "This Greek Yogurt Parfait recipe combines creamy Greek yogurt, fresh berries, and crunchy granola to create a simple grab-and-go breakfast option for busy mornings.", "$ 10.99", '/image/parfait.jpeg', "9.4 kg CO2"
+      ["Fruit Salad", "The best ever fruit salad coated in a simple fruity dressing. Perfect for potlucks, summer parties, or a side dish to your meals!", "$ 7.99", '/image/fruit_salad.jpeg', "1.0 kg CO2"
+      ]], [["Parfait", "This Greek Yogurt Parfait recipe combines creamy Greek yogurt, fresh berries, and crunchy granola to create a simple grab-and-go breakfast option for busy mornings.", "$ 10.99", '/image/parfait.jpeg', "1.3 kg CO2"
       ],
-      ["Coffee", "Coffee is a drink prepared from roasted coffee beans.", "$ 5.99", '/image/coffee.jpeg', "0.5 kg CO2"
+      ["Coffee", "Coffee is a drink prepared from roasted coffee beans.", "$ 5.99", '/image/coffee.jpeg', "1.7 kg CO2"
       ]]],
       title: ["Main", "Sides", "Dessert & Beverages"],
       avail: [[true, true], [true, true], [true, true]],
