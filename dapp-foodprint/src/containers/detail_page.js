@@ -148,8 +148,8 @@ class DetailPage extends Component {
   }
 
   handleSubmit() {
-    console.log(this.state.itemName,this.state.itemDesc, Math.round(this.state.total_footprint*1e6), tronWeb.toSun(this.state.total_price));
-    postOrderInfo(this.state.itemName,this.state.itemDesc, Math.round(this.state.total_footprint*1e6), tronWeb.toSun(this.state.total_price));
+    console.log(this.state.itemName,this.state.itemDesc, Math.round(this.state.total_footprint*1e6), window.tronWeb.toSun(this.state.total_price));
+    postOrderInfo(this.state.itemName,this.state.itemDesc, Math.round(this.state.total_footprint*1e6), window.tronWeb.toSun(this.state.total_price));
   }
 
   eventhandler(dataList, dataTitle, dataPrice, conditionals) {
