@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import { getDataFromServer, dict2urlEncode, makeid, postDataFromServer, generate_datalist } from '../http_utils.js'
 import { setCookie, getCookie } from '../cookie_utils.js'
+import { postOrderInfo, setOrderContract, getTronWeb, fetchAllOrders } from '../tron.js'
 
 import { withAlert } from 'react-alert'
 
@@ -26,11 +27,12 @@ class DetailPage extends Component {
       shoppingCartItem: {},
       one_bowl_price: parseInt(0),
       total_price: 4.99,
+      total_footprint: 4.5,
       main_menu_amount: 1,
       errorPage: false,
       condFlag: [],
       conditionals: [], //[[['冷熱冰量'], [['熱']], ['附加選項'], [['加薑汁']]]],
-      detail_choice: [["multiple", "Choices", ["熱", "去冰", "微冰", "少冰", "半冰", "正常", "加冰"], "must", [true, true, true, true, true, true, true]]]
+      detail_choice: [["multiple", "Add-ons", ["Buns", "Lettuce", "Tomato", "Cheese", "Patty", "Onion", "Chicken"], "must", [true, true, true, true, true, true, true], ["0.1 kg CO2", "0.1 kg CO2", "0.3 kg CO2", "0.3 kg CO2", "0.13 kg CO2", "0.33 kg CO2", "0.3 kg CO2"]]]
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -43,15 +45,31 @@ class DetailPage extends Component {
 
   }
 
-  componentDidMount() {
+  async componentDidMount() {
 
     if (getCookie('item') !== "" && getCookie("store_id") !== "" && getCookie("device_key") !== "" && getCookie("cart_id") !== "") {
+
+      // get tronWeb object 
+      getTronWeb();
+    
+      // Wait a while to ensure tronweb object has already injected
+      setTimeout(async ()=>{
+          // init contract object
+          await setOrderContract();
+          
+          console.log("Begin to obtain the orders information");
+          // fetch all books
+          const orders = await fetchAllOrders();
+          console.log("Orders: "+ orders);
+          
+      },50);
+
 
       var itemDict = JSON.parse(getCookie('item'))
 
       var itemCategory = itemDict["detailInfo"].itemCategory
       var itemName = itemDict["detailInfo"].itemName
-      var itemPrice = parseInt(itemDict["detailInfo"].itemPrice)
+      var itemPrice = parseFloat(itemDict["detailInfo"].itemPrice)
       var itemPic = itemDict["detailInfo"].itemPic
       var itemDesc = itemDict["detailInfo"].itemDesc
 
@@ -93,15 +111,15 @@ class DetailPage extends Component {
       //     })
       //   })
 
-      // this.setState({
-      //   itemCategory: itemCategory,
-      //   itemName: itemName,
-      //   itemPrice: itemPrice,
-      //   itemPic: itemPic,
-      //   itemDesc: itemDesc,
-      //   one_bowl_price: itemPrice,
-      //   total_price: ((itemPrice + this.addAllAddonsPrice(this.state.extraPrice)) * this.state.main_menu_amount)
-      // })
+      this.setState({
+        itemCategory: itemCategory,
+        itemName: itemName,
+        itemPrice: itemPrice,
+        itemPic: itemPic,
+        itemDesc: itemDesc,
+        // one_bowl_price: itemPrice,
+        // total_price: ((itemPrice + this.addAllAddonsPrice(this.state.extraPrice)) * this.state.main_menu_amount)
+      })
 
     }
 
@@ -130,68 +148,8 @@ class DetailPage extends Component {
   }
 
   handleSubmit() {
-
-    setCookie("cookie_key", makeid(6), 1)
-
-    if (this.checkMandatory()) {
-
-      var datalist = generate_datalist(this.state.itemCategory + " - " + this.state.itemName, this.state.main_menu_amount, this.state.total_price, this.state.shoppingCartItem, "", "")
-
-      var request_data = {
-        "service": "order",
-        "operation": "add_cookie_order_mapping",
-        "cart_id": getCookie("cart_id"),
-        "device_key": getCookie("device_key"),
-        "cookie_key": getCookie("cookie_key"),
-        "cookie_value": datalist
-      }
-
-      var request_str = JSON.stringify(request_data)
-      // console.log(request_str)
-
-      postDataFromServer(process.env.REACT_APP_SERVER_URL + '?', request_str)
-        .then(result => {
-            // console.log(result)
-          if (result["indicator"]) {
-            var cartItems = getCookie("shoppingCartItems")
-            if (cartItems === "") {
-              cartItems = getCookie("cookie_key")
-            }
-            else {
-              cartItems += "_" + getCookie("cookie_key")
-            }
-
-            setCookie("shoppingCartItems", cartItems, 1)
-
-            
-
-            var price = getCookie("itemsTotalPrice")
-
-            if (price === "") {
-              price = 0
-            }
-
-            setCookie("itemsTotalPrice", parseInt(price) + parseInt(this.state.total_price), 1)　　// server send back current total price
-            
-            this.setState({
-              switchPageFlag: true
-            }, () => { 
-              const alert = this.props.alert
-              alert.show("Successfully add to cart") })
-
-
-          }
-          
-        })
-        .catch(error => {
-        
-          // console.log(error)
-
-          this.setState({
-            errorPage: true
-          })
-        })
-    }
+    console.log(this.state.itemName,this.state.itemDesc, Math.round(this.state.total_footprint*1e6), tronWeb.toSun(this.state.total_price));
+    postOrderInfo(this.state.itemName,this.state.itemDesc, Math.round(this.state.total_footprint*1e6), tronWeb.toSun(this.state.total_price));
   }
 
   eventhandler(dataList, dataTitle, dataPrice, conditionals) {
@@ -276,6 +234,8 @@ class DetailPage extends Component {
           return <Redirect push to="/menuPage" />;
         }
 
+        console.log(getCookie("item"))
+
         return (
           <div id="body">
             <div className="display_layout">
@@ -302,7 +262,7 @@ class DetailPage extends Component {
                 
                 <div id="items_detail_section">
                   {this.state.detail_choice.map((item, index) => 
-                    <DetailChoiceSection conditionals={this.state.conditionals} condFlag={this.state.condFlag[index]} key={item[1] + index} sectionType={item[0]} sectionTitle={item[1]} sectionContent={item[2]} sectionMandatory={item[3]} sectionAvail={item[4]} onChange={this.eventhandler}/>
+                    <DetailChoiceSection conditionals={this.state.conditionals} condFlag={this.state.condFlag[index]} key={item[1] + index} sectionType={item[0]} sectionTitle={item[1]} sectionContent={item[2]} sectionMandatory={item[3]} sectionAvail={item[4]} sectionFootprint={item[5]} onChange={this.eventhandler}/>
                   )}
                 </div>
 
@@ -324,9 +284,11 @@ class DetailPage extends Component {
 
 
               <button className="add_to_cart" onClick={this.handleSubmit}>
-                <h5>Add <span id="amount">{ this.state.main_menu_amount }</span> to cart</h5>
+                <h5>Add item</h5>
                 <h6>$<span id="price">
                   { this.state.total_price }
+                </span> <span style={{color: "green", "fontSize": "70%"}}>
+                  { "("+this.state.total_footprint+" kg CO2)" }
                 </span></h6>
               </button>
 

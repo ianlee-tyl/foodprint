@@ -40,6 +40,7 @@ class DetailChoiceItem extends Component {
             <div className={this.props.avail ? "detail_choice_item" : "detail_choice_item doday_not_available"} onClick={this.handleClick}>
                 <input readOnly checked={this.props.checkedStatus} type="radio" id={this.props.itemKey} onClick={this.handleDoubleClick} />
                 <label ref={this.word} htmlFor={this.props.itemKey}><span className={ getCookie("store_id") === "DDC" ? "ddc_btn_bg" : "btn_bg" }></span>{this.props.itemContent}</label>
+                <span style={{color: "green", "fontSize": "70%"}}>{"   "+this.props.footprint}</span>
             </div>
             
             

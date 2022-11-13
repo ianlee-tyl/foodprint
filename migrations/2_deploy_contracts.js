@@ -1,5 +1,5 @@
-var LibraryContract = artifacts.require("./Library.sol");
+var MarketplaceContract = artifacts.require("./Marketplace.sol");
 
 module.exports = function(deployer) {
-   deployer.deploy(LibraryContract);
+   deployer.deploy(MarketplaceContract);
 };

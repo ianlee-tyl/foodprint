@@ -43,7 +43,7 @@ class MainMenuItem extends Component {
             newDict["detailInfo"] = {
                                         itemCategory: this.props.itemCategory,
                                         itemName: this.props.itemName,
-                                        itemPrice: (this.props.itemPrice).slice(4),
+                                        itemPrice: (this.props.itemPrice).slice(2),
                                         itemPic: this.props.itemPic,
                                         itemDesc: this.props.itemDesc,
                                         footprint: this.props.footprint
