@@ -8,8 +8,6 @@ import { withAlert } from 'react-alert'
 import { init_cart_and_device_key } from '../http_utils.js'
 import { setCookie } from '../cookie_utils.js'
 
-
-
 class StorePage extends Component {
 
   constructor(props) {
@@ -58,6 +56,18 @@ class StorePage extends Component {
     })
   }
 
+  gettronweb = async (e) => {
+      if(window.tronWeb && window.tronWeb.defaultAddress.base58){
+          let walletBalances = await window.tronWeb.trx.getAccount(
+            window.tronWeb.defaultAddress.base58
+          );
+          alert("Connected to TRON account. Account balance: "+walletBalances["balance"]/1e6)
+          this.storeOnClicked(e, "DDE")
+      }else{
+        alert("Cannot connect to a TRON account...")
+      }
+  }
+
   render() {   
         if (this.state.switchPageFlag) {
           return <Redirect push to="/menuPage" />;
@@ -69,7 +79,7 @@ class StorePage extends Component {
 
                 <div className="small_btn_holder">
                   
-                  <button onClick={(e) => this.storeOnClicked(e, "DDE")}>
+                  <button onClick={(e) => this.gettronweb(e)}>
                     <h1>Customer</h1>
                   </button>
                   
