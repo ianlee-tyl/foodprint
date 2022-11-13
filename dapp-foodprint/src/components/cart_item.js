@@ -4,30 +4,20 @@ class CartItem extends Component {
     constructor(props) {
         super(props)
         // console.log(props)
-
-        this.handleChange = this.handleChange.bind(this)
-
     }
 
-    handleChange(e){
-      
-        if (this.props.onChange) {
-            this.props.onChange(this.props.itemIndex);
-        }
-    }
     
     render() {
 
         return (
 
-            <div className="check_list_item" onClick={this.handleChange}>
-                <span className="bowls_num">{this.props.itemNum}</span>
+            <div className="check_list_item">
                 <div className="check_list_item_holder">
                     <h3>{this.props.itemTitle}</h3>
                     <p>{this.props.itemAddons}</p>
                 </div>
-                <h4>{this.props.itemPrice + "TWD"}</h4>
-                
+                <h4>{this.props.itemPrice + "USD"}</h4>
+                <h4 style={{color: "green", fontSize: "80%"}}>{"   "+this.props.foodprint + " kg CO2 / Cal"}</h4>
             </div>
             
             

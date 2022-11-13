@@ -20,7 +20,7 @@ class DetailChoiceSection extends Component {
             availList: this.props.sectionAvail,
             conditionalItem: {},
             conditionalFlag: this.props.condFlag,
-            numberLimit: 3
+            numberLimit: 10
         }
 
         this.eventhandler = this.eventhandler.bind(this)
@@ -152,7 +152,7 @@ class DetailChoiceSection extends Component {
             }
             else {
                 const alert = this.props.alert
-                alert.show("超過配料限制數量")
+                alert.show("Over the limit")
             }
 
             
@@ -188,7 +188,7 @@ class DetailChoiceSection extends Component {
                 </div>
                 <div className="detail_choice">
                     {this.props.sectionContent.map((item, index) => 
-                        <DetailChoiceItem index={index} key={this.props.sectionTitle+item} itemKey={this.props.sectionTitle+item} itemContent={item} footprint={this.props.sectionFootprint[index]} itemType={this.props.sectionType} checkedStatus={this.state.checkedStatus[index]} avail={(this.state.availList[index]==='True')&&this.state.conditionalFlag[index]} onChange={this.eventhandler}/>
+                        <DetailChoiceItem index={index} key={this.props.sectionTitle+item} itemKey={this.props.sectionTitle+item} itemContent={item} footprint={this.props.sectionFootprint[index]} itemType={this.props.sectionType} checkedStatus={this.state.checkedStatus[index]} avail={true} onChange={this.eventhandler}/>
                     )}
                 </div>
             </div>

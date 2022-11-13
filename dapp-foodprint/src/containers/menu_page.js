@@ -17,12 +17,12 @@ class MenuPage extends Component {
       item: [[
       ["Classic Burger", "The original burger starts with a 100% pure beef patty seasoned with just a pinch of salt", "$ 8.99", '/image/hamburger.png', "4.5 kg CO2"
       ],
-      ["Poke Bowl", "This everything-in-a-bowl rainbow poke bowl has seared tuna, crab sushi salad, and Japanese scrambled egg. Eat the rainbow!", "$ 8.99", '/image/bowl.jpeg', "4.5 kg CO2"
+      ["Poke Bowl", "This everything-in-a-bowl rainbow poke bowl has seared tuna, crab sushi salad, and Japanese scrambled egg. Eat the rainbow!", "$ 12.99", '/image/bowl.jpeg', "4.5 kg CO2"
       ]], [
       ["Salad", "This simple green salad is light, refreshing, and delicious!", "$ 5.99", '/image/salad.jpeg', "3.5 kg CO2"
       ],
-      ["Fruit Salad", "The best ever fruit salad coated in a simple fruity dressing. Perfect for potlucks, summer parties, or a side dish to your meals!", "$ 5.99", '/image/fruit_salad.jpeg', "3.5 kg CO2"
-      ]], [["Parfait", "This Greek Yogurt Parfait recipe combines creamy Greek yogurt, fresh berries, and crunchy granola to create a simple grab-and-go breakfast option for busy mornings.", "$ 5.99", '/image/parfait.jpeg', "3.5 kg CO2"
+      ["Fruit Salad", "The best ever fruit salad coated in a simple fruity dressing. Perfect for potlucks, summer parties, or a side dish to your meals!", "$ 7.99", '/image/fruit_salad.jpeg', "3.5 kg CO2"
+      ]], [["Parfait", "This Greek Yogurt Parfait recipe combines creamy Greek yogurt, fresh berries, and crunchy granola to create a simple grab-and-go breakfast option for busy mornings.", "$ 10.99", '/image/parfait.jpeg', "3.5 kg CO2"
       ],
       ["Coffee", "Coffee is a drink prepared from roasted coffee beans.", "$ 5.99", '/image/coffee.jpeg', "3.5 kg CO2"
       ]]],
@@ -242,7 +242,7 @@ class MenuPage extends Component {
                 
                 <div className="foot_btn_holder">
         
-                  <Link to={"/vendor"}>
+                  <Link to={"/shoppingCart"}>
                     <div className="menu_submit_cart menu_submit_btn">
                       <img alt="shopping_cart_btn" src={process.env.PUBLIC_URL + "/image/shopping_cart_white.png"} />
                     </div>

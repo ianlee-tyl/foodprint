@@ -93,6 +93,14 @@ class StorePage extends Component {
                   
                 </div>
 
+                <div className="btn_holder">
+                  
+                  <button onClick={(e) => this.storeOnClicked(e, "DDG")}>
+                    <h1>Demo</h1>
+                  </button>
+                  
+                </div>
+
                 {/*<div className="btn_holder">
                   
                   <button onClick={(e) => this.storeOnClicked(e, "DDC")}>

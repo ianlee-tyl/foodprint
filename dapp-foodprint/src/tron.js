@@ -68,7 +68,7 @@ export async function fetchAllOrders() {
     if(order.name!="") // filter the deleted orders
     {
       orders.push(
-        {id: i,name: order.name,description: order.description,price: window.tronWeb.fromSun(order.price)}
+        {id: i,name: order.name,description: order.description,carbon: order.carbon/1e6, price: window.tronWeb.fromSun(order.price)}
       )
     }
     

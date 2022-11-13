@@ -20,6 +20,8 @@ const menu_to_ingredients_dict = {
   "Coffee" : ["hot drinks", "milks", "sweetener"]
 }
 
+var detail_info = null;
+
 class DetailPage extends Component {
 
   constructor(props) {
@@ -35,13 +37,14 @@ class DetailPage extends Component {
       extraPrice: {},
       shoppingCartItem: {},
       one_bowl_price: parseInt(0),
-      total_price: 4.99,
+      total_price: 0.0,
       total_footprint: 4.5,
       main_menu_amount: 1,
       errorPage: false,
       condFlag: [],
       conditionals: [], //[[['冷熱冰量'], [['熱']], ['附加選項'], [['加薑汁']]]],
-      detail_choice: [["multiple", "Add-ons", ["Buns", "Lettuce", "Tomato", "Cheese", "Patty", "Onion", "Chicken"], "must", [true, true, true, true, true, true, true], ["0.1 kg CO2", "0.1 kg CO2", "0.3 kg CO2", "0.3 kg CO2", "0.13 kg CO2", "0.33 kg CO2", "0.3 kg CO2"]]]
+      detail_choice: [["multiple", "Add-ons", ["Buns", "Lettuce", "Tomato", "Cheese", "Patty", "Onion", "Chicken"], "must", [true, true, true, true, true, true, true], ["0.1 kg CO2", "0.1 kg CO2", "0.3 kg CO2", "0.3 kg CO2", "0.13 kg CO2", "0.33 kg CO2", "0.3 kg CO2"]]],
+      foodprint: []
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -50,8 +53,10 @@ class DetailPage extends Component {
     this.findConditionals = this.findConditionals.bind(this)
     this.checkMandatory = this.checkMandatory.bind(this)
     this.findSecNum = this.findSecNum.bind(this)
+  }
 
-
+  formatFloat(a){
+    return Math.floor(a*100)/100
   }
 
   async componentDidMount() {
@@ -73,10 +78,11 @@ class DetailPage extends Component {
           
       },50);
 
-      
-      fetch(process.env.PUBLIC_URL + '/json/foodprints_info.json')
+      await fetch(process.env.PUBLIC_URL + '/json/foodprints_info.json')
         .then((response) => response.json())
-        .then((json) => console.log(json));
+        .then((json) => detail_info = json);
+
+      console.log(detail_info)
 
       var itemDict = JSON.parse(getCookie('item'))
 
@@ -85,6 +91,28 @@ class DetailPage extends Component {
       var itemPrice = parseFloat(itemDict["detailInfo"].itemPrice)
       var itemPic = itemDict["detailInfo"].itemPic
       var itemDesc = itemDict["detailInfo"].itemDesc
+
+      var detail_choice = [];
+      for (var i=0; i<menu_to_ingredients_dict[itemName].length; i++){
+        var choices = []
+        var avail_flags = []
+        var foodprints = []
+
+        var choice_items = Object.keys(detail_info[menu_to_ingredients_dict[itemName][i]])
+        for (var j=0; j<choice_items.length; j++){
+          choices.push(choice_items[j])
+          avail_flags.push(true)
+
+          var item_info = detail_info[menu_to_ingredients_dict[itemName][i]][choice_items[j]]
+          foodprints.push(item_info["calories"]+" Cal" +"; "+this.formatFloat(item_info["calories"]*item_info["emission_per_cal"]*item_info["serving_portion"]/1000.0) +" kg CO2 / Cal")
+        }
+        detail_choice.push(["multiple", menu_to_ingredients_dict[itemName][i], choices, "must", avail_flags, foodprints])
+        
+      }
+      this.setState({
+        total_price: itemPrice,
+        detail_choice: detail_choice
+      })
 
       // var request_data = {
       //   "service": "menu",
@@ -167,30 +195,29 @@ class DetailPage extends Component {
 
   eventhandler(dataList, dataTitle, dataPrice, conditionals) {
 
-    var temp_extraPrice = this.state.extraPrice
-    var temp_shoppingCartItem = this.state.shoppingCartItem
+    // var temp_extraPrice = this.state.extraPrice
+    // var temp_shoppingCartItem = this.state.shoppingCartItem
 
-    temp_extraPrice[dataTitle] = dataPrice
-    temp_shoppingCartItem[dataTitle] = dataList
+    // temp_extraPrice[dataTitle] = dataPrice
+    // temp_shoppingCartItem[dataTitle] = dataList
 
-    // console.log("conditionals", conditionals, temp_shoppingCartItem, dataTitle, dataList)
-    if (Object.keys(conditionals).length !== 0) {
-      for (var i = 0; i < conditionals["sec"].length; i++) {
-        this.findConditionals(conditionals["sec"][i], conditionals["val"][i])
-      }
+    // // console.log("conditionals", conditionals, temp_shoppingCartItem, dataTitle, dataList)
+    // if (Object.keys(conditionals).length !== 0) {
+    //   for (var i = 0; i < conditionals["sec"].length; i++) {
+    //     this.findConditionals(conditionals["sec"][i], conditionals["val"][i])
+    //   }
+    // }
+    console.log(dataTitle)
+    var total_foodprint = 0.0
+    for (var i = 0; i < dataList.length; i++) {
+      var _item_info = detail_info[dataTitle][dataList[i]]
+      total_foodprint += _item_info["calories"]*_item_info["emission_per_cal"]*_item_info["serving_portion"]/1000.0
     }
-    
 
     this.setState({
-        extraPrice: temp_extraPrice,
-        shoppingCartItem: temp_shoppingCartItem
-      }, 
-      () => {
-        this.setState({
-          total_price: (this.state.one_bowl_price + this.addAllAddonsPrice(temp_extraPrice)) * this.state.main_menu_amount
-        })
+        total_price: this.state.itemPrice,
+        total_footprint: this.formatFloat(total_foodprint)
     })
-
   }
 
   findSecNum(sec) {
@@ -300,8 +327,8 @@ class DetailPage extends Component {
                 <h5>Add item</h5>
                 <h6>$<span id="price">
                   { this.state.total_price }
-                </span> <span style={{color: "green", "fontSize": "70%"}}>
-                  { "("+this.state.total_footprint+" kg CO2)" }
+                </span> <span style={{color: "green", "fontSize": "60%"}}>
+                  { "("+this.state.total_footprint+" kg CO2 / Cal)" }
                 </span></h6>
               </button>
 
