@@ -31,7 +31,7 @@ menu_dict
 
 def ingredient_footprint(ingredient, number):
     details = food_dict[category][ingredient] 
-    footprint = details[emission_per_cal] * details[serving_portion] * number
+    footprint = details[emission_per_cal] * details[calories] * details[serving_portion] * number
 # IGNORE details(amount) 
 
 def menu_item_footprint(food):
