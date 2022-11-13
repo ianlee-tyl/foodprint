@@ -11,6 +11,15 @@ import DetailChoiceSection from "../components/detail_choice_section.js"
 
 import '../css/main.css';
 
+const menu_to_ingredients_dict = {
+  "Classic Burger" : ["breads", "vegetables", "protein", "cheeses"],
+  "Poke Bowl" : ["grains", "protein", "vegetables", "cheeses"],
+  "Salad" : ["leafy vegetables", "protein", "vegetables", "cheeses", "seeds nuts"],
+  "Parfait" : ["yogurt", "fruits", "seeds nuts", "spreads"],
+  "Fruit Salad" : ["fruits", "spreads"],
+  "Coffee" : ["hot drinks", "milks", "sweetener"]
+}
+
 class DetailPage extends Component {
 
   constructor(props) {
@@ -64,6 +73,10 @@ class DetailPage extends Component {
           
       },50);
 
+      
+      fetch(process.env.PUBLIC_URL + '/json/foodprints_info.json')
+        .then((response) => response.json())
+        .then((json) => console.log(json));
 
       var itemDict = JSON.parse(getCookie('item'))
 
