@@ -61,7 +61,7 @@ class StorePage extends Component {
           let walletBalances = await window.tronWeb.trx.getAccount(
             window.tronWeb.defaultAddress.base58
           );
-          alert("Connected to TRON account. Account balance: "+walletBalances["balance"]/1e6 + "TRX")
+          alert("Connected to TRON account. Account balance: "+walletBalances["balance"]/1e6 + " TRX")
           this.storeOnClicked(e, "DDE")
       }else{
         alert("Cannot connect to a TRON account...")
