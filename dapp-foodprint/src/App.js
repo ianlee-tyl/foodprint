@@ -7,6 +7,7 @@ import ErrorPage from './containers/error_page'
 import DisplayPage from './containers/display_page'
 // import SpinPage from './containers/spin_page'
 import StorePage from './containers/store_page'
+import VendorPage from './containers/vendor_page'
 import FeaturePage from './containers/feature_page'
 import StatusPage from './containers/status_page'
 import StatusResultPage from './containers/status_result_page'
@@ -25,7 +26,7 @@ import { getCookie } from './cookie_utils.js'
 function App() {
 
 
-	
+
 
 
 	const options = {
@@ -34,9 +35,9 @@ function App() {
 		offset: '15px',
 		transition: 'fade',
 		containerStyle: {
-		  zIndex: 10000000
+			zIndex: 10000000
 		}
-		
+
 	}
 
 	// function toggleFullScreen() {
@@ -54,69 +55,70 @@ function App() {
 	// 	}
 	// }
 
-	window.alert = function(name){
-        var iframe = document.createElement("IFRAME");
-        iframe.setAttribute("src", 'data:text/plain,');
-        iframe.style.display="none";
-        document.documentElement.appendChild(iframe);
-        window.frames[0].window.alert(name);
-        iframe.parentNode.removeChild(iframe);
-    };
+	window.alert = function (name) {
+		var iframe = document.createElement("IFRAME");
+		iframe.setAttribute("src", 'data:text/plain,');
+		iframe.style.display = "none";
+		document.documentElement.appendChild(iframe);
+		window.frames[0].window.alert(name);
+		iframe.parentNode.removeChild(iframe);
+	};
 
 
 	window.confirm = function (message) {
-        var iframe = document.createElement("IFRAME");
-        iframe.style.display = "none";
-        iframe.setAttribute("src", 'data:text/plain,');
-        document.documentElement.appendChild(iframe);
-        var alertFrame = window.frames[0];
-        var result = alertFrame.window.confirm(message);
-        iframe.parentNode.removeChild(iframe);
-        return result;
-    };
+		var iframe = document.createElement("IFRAME");
+		iframe.style.display = "none";
+		iframe.setAttribute("src", 'data:text/plain,');
+		document.documentElement.appendChild(iframe);
+		var alertFrame = window.frames[0];
+		var result = alertFrame.window.confirm(message);
+		iframe.parentNode.removeChild(iframe);
+		return result;
+	};
 
-    if (getCookie("store_id") === "DDC") {
-      document.documentElement.style.setProperty('--main-color', '#d4b290');
-      document.documentElement.style.setProperty('--sub-color', '#3d3d3d');
-      document.documentElement.style.setProperty('--light-color', '#F5DC9B');
-      document.documentElement.style.setProperty('--dark-color', '#d4b290');
-      document.documentElement.style.setProperty('--grey-color', '#2d2d2d');
-      document.documentElement.style.setProperty('--red-color', '#DB5531');
-      document.documentElement.style.setProperty('--middle-grey-color', '#a1a1a1');
+	if (getCookie("store_id") === "DDC") {
+		document.documentElement.style.setProperty('--main-color', '#d4b290');
+		document.documentElement.style.setProperty('--sub-color', '#3d3d3d');
+		document.documentElement.style.setProperty('--light-color', '#F5DC9B');
+		document.documentElement.style.setProperty('--dark-color', '#d4b290');
+		document.documentElement.style.setProperty('--grey-color', '#2d2d2d');
+		document.documentElement.style.setProperty('--red-color', '#DB5531');
+		document.documentElement.style.setProperty('--middle-grey-color', '#a1a1a1');
 	}
-    else {
+	else {
 		document.documentElement.style.setProperty('--main-color', '#efad00');
-	    document.documentElement.style.setProperty('--sub-color', '#ffffff');
-	    document.documentElement.style.setProperty('--light-color', '#F5DC9B');
-	    document.documentElement.style.setProperty('--dark-color', '#101820');
-	    document.documentElement.style.setProperty('--grey-color', '#f1f1f1');
-	    document.documentElement.style.setProperty('--red-color', '#DB5531');
-	    document.documentElement.style.setProperty('--middle-grey-color', '#a1a1a1');
+		document.documentElement.style.setProperty('--sub-color', '#ffffff');
+		document.documentElement.style.setProperty('--light-color', '#F5DC9B');
+		document.documentElement.style.setProperty('--dark-color', '#101820');
+		document.documentElement.style.setProperty('--grey-color', '#f1f1f1');
+		document.documentElement.style.setProperty('--red-color', '#DB5531');
+		document.documentElement.style.setProperty('--middle-grey-color', '#a1a1a1');
 	}
-  
-	
+
+
 	return (
 
-	<AlertProvider template={AlertTemplate} {...options}>
-		{/*<a id="spinPage" href="/spinPage">spinPage</a>
+		<AlertProvider template={AlertTemplate} {...options}>
+			{/*<a id="spinPage" href="/spinPage">spinPage</a>
 		<button onClick={toggleFullScreen} id="fullscreen">full</button>*/}
-		<div className="App">
-		    <Switch>
-		    	<Route exact path="/" component={StorePage}/>
-		    	{/*<Route path="/statusPage" component={StatusPage}/>
+			<div className="App">
+				<Switch>
+					<Route exact path="/" component={StorePage} />
+					{/*<Route path="/statusPage" component={StatusPage}/>
 		    	<Route path="/statusResultPage" component={StatusResultPage}/>
 		    	<Route path="/featurePage" component={FeaturePage}/>*/}
-				<Route path="/menuPage" component={MenuPage}/>
-				<Route path="/detailPage" component={DetailPage} />
-				<Route path="/shoppingCart" component={CartPage}/>
-				<Route path="/infoPage" component={InfoPage}/>
-				<Route path="/errorPage" component={ErrorPage}/>
-				<Route path="/displayPage" component={DisplayPage}/>
-				{/*<Route path="/spinPage" component={SpinPage}/>*/}
-		    </Switch>
-		</div>
-		  
-	</AlertProvider>
+					<Route path="/menuPage" component={MenuPage} />
+					<Route path="/detailPage" component={DetailPage} />
+					<Route path="/shoppingCart" component={CartPage} />
+					<Route path="/infoPage" component={InfoPage} />
+					<Route path="/errorPage" component={ErrorPage} />
+					<Route path="/displayPage" component={DisplayPage} />
+					<Route path="/vendorPage" component={VendorPage} />
+					{/*<Route path="/spinPage" component={SpinPage}/>*/}
+				</Switch>
+			</div>
+
+		</AlertProvider>
 
 	);
 }
