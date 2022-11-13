@@ -474,7 +474,7 @@ class DetailPage extends Component {
       foodprint_dict: {},
       one_bowl_price: parseInt(0),
       total_price: 0.0,
-      total_footprint: 4.5,
+      total_footprint: 0.0,
       main_menu_amount: 1,
       errorPage: false,
       condFlag: [],
