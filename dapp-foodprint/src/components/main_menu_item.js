@@ -45,7 +45,8 @@ class MainMenuItem extends Component {
                                         itemName: this.props.itemName,
                                         itemPrice: (this.props.itemPrice).slice(4),
                                         itemPic: this.props.itemPic,
-                                        itemDesc: this.props.itemDesc
+                                        itemDesc: this.props.itemDesc,
+                                        footprint: this.props.footprint
                                     }
     
             
@@ -73,6 +74,7 @@ class MainMenuItem extends Component {
                 
                 <div className="doday_menu_info">
                     <h4 className="doday_menu_price">{this.props.itemPrice}</h4>
+                    <h4 className="doday_menu_footprint">{this.props.footprint}</h4>
                     <h2 className="doday_menu_title">{this.props.itemName}</h2>
                     <h3 className="doday_menu_detail">{this.props.itemDesc}</h3>
                 </div>

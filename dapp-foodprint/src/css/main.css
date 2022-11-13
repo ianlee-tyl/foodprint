@@ -506,6 +506,13 @@ html{
 	color: var(--dark-color);
 }
 
+.doday_menu_footprint{
+	font-size: var(--semi-large-text);
+	padding: 0px calc(var(--win_width)*(2/80)) calc(var(--win_width)*(13/800));
+	text-align: left;
+	color: green;
+}
+
 .doday_img_holder{
 	float: right;
 	height: calc(var(--win_width)*(3/16)); 

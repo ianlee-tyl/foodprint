@@ -16,7 +16,7 @@ class MenuPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: [[["Classic Burger", "The original burger starts with a 100% pure beef patty seasoned with just a pinch of salt", "$ 8.99", '/image/hamburger.png']], [["Chocolate Ice Cream", "This is why chocoholics become chocoholics. Rich, creamy, fresh chocolate that's made especially for you.", "$ 5.99", '/image/icecream.png']], ],
+      item: [[["Classic Burger", "The original burger starts with a 100% pure beef patty seasoned with just a pinch of salt", "$ 8.99", '/image/hamburger.png', "4.5 kg CO2"]], [["Chocolate Ice Cream", "This is why chocoholics become chocoholics. Rich, creamy, fresh chocolate that's made especially for you.", "$ 5.99", '/image/icecream.png', "3.5 kg CO2"]], ],
       title: ["Hamburger", "Dessert"],
       avail: [[[true]], [[true]]],
       errorPage: false,
@@ -55,6 +55,9 @@ class MenuPage extends Component {
       }
 
       setCookie("itemsTotalPrice", price, 1)
+      this.setState({
+        price: this.state.price
+      })
 
       // var url = process.env.REACT_APP_SERVER_URL
 
@@ -207,7 +210,7 @@ class MenuPage extends Component {
       
                   <div className="store_img_detail">
                     <div className="store_title">
-                      <h1 id="store_name" ref={this.store_title}>Foodprint</h1>
+                      <h1 id="store_name" ref={this.store_title}>Foodprint Store</h1>
                       <h2 id="store_address" ref={this.store_address}>MIT</h2>
                       <h3 id="store_phone_num" ref={this.store_phone}>Phone: (617) 253-1000</h3>
                       <h3 id="store_avail"><span ref={this.store_avail}>Open</span></h3>
@@ -230,20 +233,14 @@ class MenuPage extends Component {
                 
                 <div className="foot_btn_holder">
         
-                  <Link to={"/shoppingCart"}>
+                  <Link to={"/vendor"}>
                     <div className="menu_submit_cart menu_submit_btn">
                       <img alt="shopping_cart_btn" src={process.env.PUBLIC_URL + "/image/shopping_cart_white.png"} />
-                      <h6>$
-                        <span id="price">
-                          {this.state.price}
-                        </span>
-                      </h6>
                     </div>
                   </Link>
 
                   <div className="menu_submit_cancel menu_submit_btn" onClick={this.cancel_order}>
                     <img alt="cancel_btn" src={process.env.PUBLIC_URL + "/image/cancel_btn.png"} />
-                    <h6>Restart Order</h6>
                   </div>
 
                 </div>

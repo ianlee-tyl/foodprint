@@ -24,7 +24,7 @@ class MainMenuCategory extends Component {
             return (
                 <div className="category">
                   <h1 className="category_name">{this.props.titleName}</h1>
-                  {this.props.itemList.map((item, index) => <MainMenuItem key={index} itemAvail={this.props.itemAvail[index]} itemCategory={this.props.titleName} itemName={item[0]} itemDesc={item[1]} itemPrice={(item[2]).toString()} itemPic={item[3]} />)}
+                  {this.props.itemList.map((item, index) => <MainMenuItem key={index} itemAvail={this.props.itemAvail[index]} itemCategory={this.props.titleName} itemName={item[0]} itemDesc={item[1]} itemPrice={(item[2]).toString()} itemPic={item[3]} footprint={item[4]}/>)}
                 </div>
             );
         }

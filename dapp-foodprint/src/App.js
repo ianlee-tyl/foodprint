@@ -103,9 +103,9 @@ function App() {
 		<div className="App">
 		    <Switch>
 		    	<Route exact path="/" component={StorePage}/>
-		    	<Route path="/statusPage" component={StatusPage}/>
+		    	{/*<Route path="/statusPage" component={StatusPage}/>
 		    	<Route path="/statusResultPage" component={StatusResultPage}/>
-		    	<Route path="/featurePage" component={FeaturePage}/>
+		    	<Route path="/featurePage" component={FeaturePage}/>*/}
 				<Route path="/menuPage" component={MenuPage}/>
 				<Route path="/detailPage" component={DetailPage} />
 				<Route path="/shoppingCart" component={CartPage}/>

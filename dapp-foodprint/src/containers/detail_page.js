@@ -30,7 +30,7 @@ class DetailPage extends Component {
       errorPage: false,
       condFlag: [],
       conditionals: [], //[[['冷熱冰量'], [['熱']], ['附加選項'], [['加薑汁']]]],
-      detail_choice: [["multiple", "冷熱冰量", ["熱", "去冰", "微冰", "少冰", "半冰", "正常", "加冰"], "must", [true, true, true, true, true, true, true]], ["single", "甜度", ["正常糖", "半糖"], "must", [true, true]], ["multiple", "附加選項", ["加薑汁"], "optional", [true]]]
+      detail_choice: [["multiple", "Choices", ["熱", "去冰", "微冰", "少冰", "半冰", "正常", "加冰"], "must", [true, true, true, true, true, true, true]]]
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -308,7 +308,7 @@ class DetailPage extends Component {
 
 
                 <div className="amount_section">
-                  <button id="minus" onClick={() => {
+                  {/*<button id="minus" onClick={() => {
                     if (this.state.main_menu_amount - 1 <= 0){
                       this.setState({ main_menu_amount: 1 }, () => {this.handleChange()})
                     }
@@ -317,7 +317,7 @@ class DetailPage extends Component {
                     }
                   }}>-</button>
                   <input type="number" id="num" readOnly value={ this.state.main_menu_amount } />
-                  <button id="plus" onClick={() => { this.setState({ main_menu_amount: this.state.main_menu_amount + 1 }, () => {this.handleChange()}) }}>+</button>
+                  <button id="plus" onClick={() => { this.setState({ main_menu_amount: this.state.main_menu_amount + 1 }, () => {this.handleChange()}) }}>+</button>*/}
                 </div>
 
               </div>
