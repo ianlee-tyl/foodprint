@@ -78,7 +78,7 @@ class DetailPage extends Component {
           
       },50);
 
-      await fetch(process.env.PUBLIC_URL + '/json/foodprints_info.json')
+      await fetch(process.env.PUBLIC_URL + '/image/foodprints_info.json')
         .then((response) => response.json())
         .then((json) => detail_info = json);
 
