@@ -1,5 +1,6 @@
 # Foodprint
 ## Reducing carbon emission, every time you eat
+## Received Top 15 (Honorable Mentions) in TRON 2022 Web 3.0 Hackathon
 
 ![alt text](demo_slide.png)
 
